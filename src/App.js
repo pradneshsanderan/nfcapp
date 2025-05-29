@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import bg1 from './assets/bg1.png';  // (if you want to use this later)
-import bg2 from './assets/bg2.png';
+
 
 function App() {
   // Glow effect that tracks the cursor inside a button
