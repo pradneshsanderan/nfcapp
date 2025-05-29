@@ -1,7 +1,36 @@
 body {
   margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: hidden;  /* hides vertical scrollbar */
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #1a1a1a; /* fallback color */
+}
+
+
+
+.bio-card {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  max-width: 700px;      /* make card wider */
+  padding: 3rem 4rem;    /* add more padding */
+
+  border-radius: 16px;   /* nicer rounded corners */
+  color: #fff;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.bio-card h1 {
+  font-size: 3rem;       /* bigger heading */
+  margin-bottom: 1rem;
+  color: #f6e8dd;
+}
+
+.bio-card p {
+  font-size: 1.25rem;    /* bigger paragraph text */
+  line-height: 1.6;      /* improve readability */
+  color: #e6bf98;           /* lighter text for better contrast */
 }
 
 .container {
@@ -20,20 +49,125 @@ h1 {
 
 p {
   margin-bottom: 2rem;
-  color: #555;
+
   max-width: 500px;
 }
 
-.buttons .btn {
-  text-decoration: none;
-  color: white;
-  padding: 0.6rem 1.2rem;
-  border-radius: 5px;
-  margin: 0 0.5rem;
-  display: inline-block;
-  font-weight: bold;
-  transition: background-color 0.3s;
+/* Container holding the buttons */
+.buttons {
+  display: flex;
+  flex-direction: row;   /* ✅ horizontal layout */
+  gap: 1.5rem;            /* space between buttons */
+  justify-content: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;       /* ✅ wraps buttons if too narrow */
 }
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease;
+  min-width: 150px;
+  text-align: center;
+}
+
+/* Add hover transform */
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* Holographic effect layer */
+.holo::before {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 0, 255, 0.3),
+    rgba(0, 255, 255, 0.3),
+    rgba(255, 255, 0, 0.3),
+    rgba(255, 0, 255, 0.3)
+  );
+  background-size: 400% 400%;
+  animation: holoMove 10s linear infinite;
+  z-index: -1;
+  filter: blur(12px);
+}
+
+.holo {
+  background-color: #1a1a1a;
+  mix-blend-mode: screen;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@keyframes holoMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(255, 255, 255, 0.6),
+    rgba(0, 255, 255, 0.2),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  filter: blur(20px); /* more blur = smoother glow */
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.btn:hover::after {
+  opacity: 1;
+  animation: pulseGlow 1.2s infinite;
+}
+
+
 
 .linkedin {
   background-color: #0077b5;
@@ -50,3 +184,5 @@ p {
 .btn:hover {
   opacity: 0.9;
 }
+
+
