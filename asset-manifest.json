@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/nfcapp/static/css/main.ac31852d.css",
+    "main.js": "/nfcapp/static/js/main.06d5a3f5.js",
+    "static/media/bg1.png": "/nfcapp/static/media/bg1.15ebb0eddd36cc629d39.png",
+    "static/media/bg2.png": "/nfcapp/static/media/bg2.3b03d089d3ed02587f1d.png",
+    "index.html": "/nfcapp/index.html",
+    "main.ac31852d.css.map": "/nfcapp/static/css/main.ac31852d.css.map",
+    "main.06d5a3f5.js.map": "/nfcapp/static/js/main.06d5a3f5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ac31852d.css",
+    "static/js/main.06d5a3f5.js"
+  ]
+}
