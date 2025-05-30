@@ -21,7 +21,7 @@ function App() {
         position: 'relative',
         minHeight: '100vh',
         backgroundImage: `url(${bg1})`,
-        backgroundSize: '175% auto',
+        backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       }}
